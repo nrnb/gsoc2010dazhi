@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/lib
+END
+ncbiEutil2_core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/lib/ncbiEutil2_core.jar
+END
+junit-4.8.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/lib/junit-4.8.2.jar
+END
+cytoscape-plugins-comm.jar
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/lib/cytoscape-plugins-comm.jar
+END

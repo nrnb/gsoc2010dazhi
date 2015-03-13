@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui
+END
+GDSViewerDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GDSViewerDialog.java
+END
+GSEViewerDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GSEViewerDialog.java
+END
+GDSViewerDialog.form
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GDSViewerDialog.form
+END
+SOFTViewerPane.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/SOFTViewerPane.java
+END
+GSEViewerDialog.form
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GSEViewerDialog.form
+END
+SOFTViewerPane.form
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/SOFTViewerPane.form
+END
+GDSSubsetViewerPane.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GDSSubsetViewerPane.java
+END
+GDSSubsetViewerPane.form
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GDSSubsetViewerPane.form
+END
+SOFTViewer.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/SOFTViewer.java
+END
+GEOQueryUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/geo/ui/GEOQueryUI.java
+END

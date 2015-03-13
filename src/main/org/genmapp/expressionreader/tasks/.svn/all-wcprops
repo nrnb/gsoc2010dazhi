@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/tasks
+END
+GEOSearchTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/tasks/GEOSearchTask.java
+END
+GSMImportTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/tasks/GSMImportTask.java
+END
+AbstractTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/tasks/AbstractTask.java
+END
+SOFTDownloadTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/genmappcs/!svn/ver/190/tags/expressionreader-gsoc-2010-final/src/main/org/genmapp/expressionreader/tasks/SOFTDownloadTask.java
+END

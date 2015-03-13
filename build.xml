@@ -1,0 +1,213 @@
+<?xml version = "1.0"?>
+<!--
+=====================================================================
+              A N T   B U I L D   F I L E
+=====================================================================
+  Project      : Cytoscape Gene Expression Reader Plugin
+  Author       : Dazhi Jiao dazhi.jiao@gmail.com
+  Version      : $Revision: $ $Date: $
+=====================================================================
+-->
+<project name="cytoscape.ExpressionReader" default="jar" basedir=".">
+    <property name="cytoscape.dir" location="/usr/local/cytoscape-v2.7.0" />
+    <property name="cytoscape-2.6.dir" location="/usr/local/cytoscape-v2.6.3" />
+	<!-- Compilation Parameters -->
+    <property name="compile.debug" value="true" />
+    <property name="compile.deprecation" value="true" />
+    <property name="compile.optimize" value="true" />
+
+	<!-- Classpaths -->
+    <path id="run.classpath">
+        <fileset dir="${cytoscape.dir}/lib/">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${cytoscape.dir}">
+            <include name="cytoscape.jar" />
+        </fileset>
+    </path>
+
+    <path id="run-2.6.classpath">
+        <fileset dir="${cytoscape-2.6.dir}/lib/">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${cytoscape-2.6.dir}">
+            <include name="cytoscape.jar" />
+        </fileset>
+    </path>
+
+    <path id="compile.classpath">
+        <path refid="run.classpath"/>
+        <pathelement path="build/classes" />
+        <fileset dir="lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+    
+    <path id="test.compile.classpath">
+        <path refid="compile.classpath"/>
+        <pathelement location="build/classes/"/>
+    </path>
+
+    <path id="test.classpath">
+        <path refid="test.compile.classpath"/>
+        <pathelement path="build/test/classes"/>
+    </path>
+
+	<!--
+  =====================================================================
+    I N I T
+  =====================================================================
+    Preparing for compile
+  =====================================================================
+  -->
+    <target name="init" description="Preparing for building">
+        <mkdir dir="build" />
+        <mkdir dir="build/classes" />
+    </target>
+
+	<!--
+  =====================================================================
+    C O M P I L E
+  =====================================================================
+    Compile with Cytoscape under deveopment
+  =====================================================================
+  -->
+    <target name="compile"
+	        depends="compile-core"
+	        description="Compile with Cytoscape under development" />
+
+    <target name="compile-core" depends="init">
+        <javac source="1.5"
+		       debug="${compile.debug}"
+		       deprecation="${compile.deprecation}"
+		       optimize="${compile.optimize}"
+		       srcdir="src/main"
+		       destdir="build/classes">
+            <classpath refid="compile.classpath" />
+        </javac>
+    </target>
+
+    <target name="compile-test" depends="compile">
+        <mkdir dir="build/test/classes" />
+        <javac source="1.5"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}"
+               srcdir="src/test"
+               destdir="build/test/classes">
+            <classpath refid="test.compile.classpath" />
+        </javac>
+    </target>
+    
+	<!--
+  =====================================================================
+    C L E A N
+  =====================================================================
+    Removes the built and distrabution files
+  =====================================================================
+  -->
+    <target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${src} directory trees -->
+        <delete dir="build" />
+        <delete file="${cytoscape.dir}/plugins/ExpressionReader.jar"/>
+    </target>
+
+	<!--
+  =====================================================================
+    J A R
+  =====================================================================
+    Build jar files for distribution
+  =====================================================================
+  -->
+    <target name="jar"
+	        depends="compile"
+	        description="makes a jar for Cytoscape under development">
+        <mkdir dir="build/lib" />
+        <unzip dest="build/lib/">
+            <fileset dir="lib">
+                <include name="*.jar" />
+                <exclude name="junit-*.jar" />
+            </fileset>
+        </unzip>
+        <copy todir="build/classes/org/genmapp/expressionreader">
+            <fileset file="src/main/org/genmapp/expressionreader/*.props" />
+        </copy>
+        <jar jarfile="build/ExpressionReader.jar">
+            <manifest>
+                <attribute name="Cytoscape-Plugin" value="org.genmapp.expressionreader.ExpressionReaderPlugin" />
+            </manifest>
+            <fileset dir="build/classes" />
+            <fileset dir="build/lib" />
+        </jar>
+        <delete dir="build/lib"/>
+    </target>
+
+
+  <!--
+  =====================================================================
+    R U N
+  =====================================================================
+    Run cytoscape with the plugin
+  =====================================================================
+  -->
+    <target name="run" depends="jar" description="Run under development">
+        <copy todir="${cytoscape.dir}/plugins/">
+            <fileset file="build/ExpressionReader.jar" />
+        </copy>
+        <delete file="build/ExpressionReader.jar"/>
+        <java classname="cytoscape.CyMain"
+		      classpathref="run.classpath"
+		      fork="true"
+		      maxmemory="1g">
+            <arg value="-s" />
+            <arg value="${cytoscape.dir}/sampleData/galFiltered.cys" />
+            <arg value="-p" />
+            <arg value="${cytoscape.dir}/plugins" />
+        </java>
+    </target>
+
+    <target name="run-2.6" depends="jar" description="Run under development">
+        <copy todir="${cytoscape-2.6.dir}/plugins/">
+            <fileset file="build/ExpressionReader.jar" />
+        </copy>
+        <delete file="build/ExpressionReader.jar"/>
+        <java classname="cytoscape.CyMain"
+		      classpathref="run-2.6.classpath"
+		      fork="true"
+		      maxmemory="1g">
+            <arg value="-s" />
+            <arg value="${cytoscape-2.6.dir}/sampleData/galFiltered.cys" />
+            <arg value="-p" />
+            <arg value="${cytoscape-2.6.dir}/plugins" />
+        </java>
+    </target>
+
+  <!--
+  =====================================================================
+    T E S T
+  =====================================================================
+    Targets that buids or run the junit test
+  =====================================================================
+  -->
+    <target name="test" depends="compile-test" description="Runs unit tests">
+        <mkdir dir="test/unittest" />
+        <junit printsummary="off"
+               haltonfailure="no"
+               errorProperty="tests.failed"
+               failureProperty="tests.failed">
+            <classpath refid="test.classpath" />
+            <sysproperty key="dataDir" file="src/test" />
+            <formatter type="xml" />
+            <formatter type="brief" usefile="false" />
+            <batchtest fork="yes"
+                           todir="test/unittest"
+                           unless="testcase">
+                <fileset dir="src/test" includes="**/*Test.java" />
+            </batchtest>
+            <batchtest fork="yes" todir="test/unittest" if="testcase">
+                <fileset dir="src/test" includes="**/${testcase}.java" />
+            </batchtest>
+        </junit>
+        <fail if="tests.failed">Tests failed!</fail>
+    </target>
+</project>
